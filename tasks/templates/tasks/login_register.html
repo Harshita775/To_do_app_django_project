@@ -1,0 +1,81 @@
+{% extends "tasks/main.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+<body>
+
+    {% if messages %}
+    <ul class="messages">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    
+
+{% if page == 'login' %}
+
+    <div class="header-bar">
+        <h1>Login</h1>
+        <a href="{% url 'home' %}">Go Back</a>
+    </div>
+
+    <div class="card-body">
+        <form method="POST" action="">
+            {% csrf_token %}
+    
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Enter Username"/>
+
+            <br><br>
+    
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Enter Password"/>
+
+            <br><br>
+    
+            <input class="button" type="submit" value="Login"/>
+        </form>
+        <p>haven't signed up yet? <a href="{% url 'register' %}">Sign up</a></p>
+    </div>   
+    
+
+{% else %}
+    {% comment %} REGISTRATION {% endcomment %}
+
+    <div class="header-bar">
+        <h1>Register</h1>
+        <a href="{% url 'home' %}">Go Back</a>
+    </div>
+    <div class="card-body">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <label>{{form.username.label}}<label>
+            {{form.username}}
+            <p><i>Required 150 characters or fewer.Letters, digits and @/./+/-/_only.</i></p>
+            <label>{{form.password1.label}}<label>
+            {{form.password1}}
+
+            <label>{{form.password2.label}}<label>
+            {{form.password2}}
+
+            <input style="margin-top:10px ;" class="button" type="submit" value="Register"/>
+        </form>
+        <p>Already signed up?<a href="{% url 'login' %}">Login</a></p>
+    </div>
+
+{% endif %}
+</body>
+</html>
+
+{% endblock content %}
+
+

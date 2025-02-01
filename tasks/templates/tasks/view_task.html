@@ -1,0 +1,17 @@
+{% extends "tasks/main.html" %}
+
+{% block content %}
+<div class="header-bar">
+<h2>Task Details</h2>
+<a href="{% url 'ulist' %}">&#8592; Go Back</a>
+</div>
+
+<div class="card-body">
+    <p><b>Title: </b>{{ task.title }}</p>
+    <p><b>Created by: </b>{{task.user}}</p>
+    <p><b>Description: </b>{{ task.description }}</p>
+    <p><b>Created On: </b>{{ task.created }}</p>
+    <p><b>Complete Status: </b>{{ task.complete }}</p>
+</div>
+
+{% endblock content %}

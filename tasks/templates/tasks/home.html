@@ -1,0 +1,14 @@
+{% extends "tasks/main.html" %}
+
+{% block content %}
+<div class="header-bar">
+    <h2>Note Taking Made Simple..</h2>
+    <nav>
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'register' %}">Signup</a>
+    </nav>
+</div>
+<div> 
+    <img src="static/to_do_img.webp" width="550" height="410">
+</div>
+{% endblock content %}
